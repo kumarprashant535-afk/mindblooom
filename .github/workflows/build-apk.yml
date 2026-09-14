@@ -26,30 +26,30 @@ jobs:
         distribution: 'adopt'
 
     - name: Make gradlew executable
-      run: chmod +x Mindblooom_App/gradlew
+      run: chmod +x Mindblooom_App/android/gradlew
       
     - name: Build Debug APK
       run: |
-        cd Mindblooom_App
+        cd Mindblooom_App/android
         ./gradlew assembleDebug
     
     - name: Build Release APK
       run: |
-        cd Mindblooom_App
+        cd Mindblooom_App/android
         ./gradlew assembleRelease
 
     - name: Upload Debug APK to artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Mindblooom-Debug
-        path: Mindblooom_App/app/build/outputs/apk/debug/app-debug.apk
+        path: Mindblooom_App/android/app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30
 
     - name: Upload Release APK to artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Mindblooom-Release
-        path: Mindblooom_App/app/build/outputs/apk/release/app-release.apk
+        path: Mindblooom_App/android/app/build/outputs/apk/release/app-release.apk
         retention-days: 30
 
     - name: Create Release Notes
@@ -70,8 +70,8 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          Mindblooom_App/app/build/outputs/apk/debug/app-debug.apk
-          Mindblooom_App/app/build/outputs/apk/release/app-release.apk
+          Mindblooom_App/android/app/build/outputs/apk/debug/app-debug.apk
+          Mindblooom_App/android/app/build/outputs/apk/release/app-release.apk
         body_path: release_notes.md
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
