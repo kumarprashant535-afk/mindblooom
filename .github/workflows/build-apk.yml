@@ -20,6 +20,12 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
+    - name: Regenerate Gradle wrapper
+  run: |
+    cd Mindblooom_App/android
+    rm -rf gradle/wrapper/gradle-wrapper.jar gradle/wrapper/gradle-wrapper.properties
+    gradle wrapper --gradle-version 8.6
+    chmod +x gradlew
       uses: actions/setup-java@v4
       with:
         java-version: '17'
