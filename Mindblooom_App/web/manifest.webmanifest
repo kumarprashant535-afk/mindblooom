@@ -1,0 +1,10 @@
+{
+  "name": "Mindblooom",
+  "short_name": "Mindblooom",
+  "description": "Play. Relax. Think. Grow. A calm, family-friendly 999-level brain game.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#8194ff",
+  "orientation": "portrait"
+}
