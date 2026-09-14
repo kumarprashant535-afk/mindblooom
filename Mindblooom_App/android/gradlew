@@ -1,16 +1,17 @@
 #!/bin/sh
-PRG="$0"
+set -e
+PRG=$0
 while [ -h "$PRG" ]; do
   ls=$(ls -ld "$PRG")
   link=$(expr "$ls" : '.*-> \(.*\)$')
   if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
+    PRG=$link
   else
-    PRG=$(dirname "$PRG")"/$link"
+    PRG=$(dirname "$PRG")/$link
   fi
 done
-SAVED="$(cd "$(dirname "$PRG")" && pwd)"
-APP_HOME="$SAVED"
+SAVED=$(cd "$(dirname "$PRG")" && pwd)
+APP_HOME=$SAVED
 if [ -z "$JAVA_HOME" ]; then
   JAVACMD=java
 else
